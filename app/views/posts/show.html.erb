@@ -1,0 +1,68 @@
+<section>
+  <aside>
+
+    <% if @post.primary_image? %>
+      <div class="cards">
+        <div class="card">
+          <div class="card-image">
+            <%= image_tag(@post.primary_image)%>
+          </div>
+          <div class="card-header">
+            <h4><%= @post.title %></h4>
+          </div>
+          
+        </div>
+      </div>
+    <% end %>
+
+
+    <% if @post.source? %>
+      <div class="cards">
+        <div class="card">
+          <div class="card-header">
+            Article originally published at
+          </div>
+          <div class="card-copy">
+            <p><%= link_to @post.source, @post.source %></p>
+          </div>
+        </div>
+      </div>
+  <% end %>
+
+</div>
+
+  </aside>
+  <article class="type-system-serif"> 
+    <h1><%= @post.title %></h1>
+    <p><%= simple_format @post.body %></p> 
+    
+    <% if @post.biography? %>
+    <hr>
+    <h2>Biography</h2>
+    <p><%= simple_format @post.biography %></p> 
+    <% end %>
+
+    <% if @post.further_readings? %>
+    <hr>
+    <h2>Further Readings</h2>
+    <p><%= simple_format @post.further_readings %></p> 
+    <% end %>
+
+
+
+    <hr>
+    <h2>Writings</h2><p>la la la</p> <hr>
+
+    <% if @post.links? %>
+    <h2>External Links</h2><p><% @post.links.split(",").each {|t| t.strip!}.each do |link| %>
+     <%= link_to link, link %><br>
+
+    <% end %>
+    <% end %>
+
+
+  </p> 
+
+  </article>
+</section>
+

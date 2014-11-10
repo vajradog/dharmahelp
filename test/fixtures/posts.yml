@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+compassion:
+  title: Compassion
+  body: "sympathetic pity and concern for the sufferings or misfortunes of others."
+  id: 1
+
+kindness:
+  title: Kindness
+  body: "Kindness is a behavior marked by ethical characteristics, a pleasant disposition, and concern for others. It is known as a virtue, and recognized as a value in many cultures and religions"
+  id: 2
