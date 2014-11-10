@@ -48,10 +48,12 @@
     <p><%= simple_format @post.further_readings %></p> 
     <% end %>
 
-
-
+    <% if @post.further_readings? %>
     <hr>
-    <h2>Writings</h2><p>la la la</p> <hr>
+    <h2>Writings</h2>
+    <p><%= simple_format @post.writings %></p> 
+    <% end %>
+
 
     <% if @post.links? %>
     <h2>External Links</h2><p><% @post.links.split(",").each {|t| t.strip!}.each do |link| %>
