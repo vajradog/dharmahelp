@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
 	
 	def index
-		@posts = Post.all
+		@posts = Post.text_search(params[:query]).page(params[:page]).per_page(3)
 	end
 
 	def new

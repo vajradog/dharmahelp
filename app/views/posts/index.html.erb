@@ -14,6 +14,11 @@
 <br>
 <hr>
 
+<%= form_tag posts_path, method: :get do %>
+  <%= text_field_tag :query, params[:query] %>
+  <%= submit_tag "Search", title: nil %>
+<% end %>
+
 <% @posts.each do |post| %>
 	<%= link_to post.title, post_path(post) %>
 	<%= post.body %>
@@ -24,8 +29,9 @@
 	<hr>
 <% end %>
 
+<%= will_paginate @posts %>
 
-
+<!--
 <article class="type-system-serif">
   <p class="type">Category: Dictionary</p>
   <h1><%= link_to "Karma", post_path(Post.first) %></h1>
@@ -39,7 +45,7 @@
   <hr>
   <p class="author">Author Name</p>
 </article>
-
+-->
 
 
 <br><br>

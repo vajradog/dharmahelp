@@ -14,7 +14,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'devise'
 gem 'rails_12factor', group: :production
-
+gem 'will_paginate'
+#gem 'textacular', '~> 3.0'
+gem 'pg_search'
 
 gem 'bourbon'
 gem 'neat'
