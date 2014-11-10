@@ -4,30 +4,38 @@ class Post < ActiveRecord::Base
 	validates :body, presence: true
 
 	include PgSearch
-	pg_search_scope :search, against: [:title, :body],
+	pg_search_scope :search, against: [:title, :body, :biography, :writings],
 		using: {tsearch: {dictionary: "english"}}
 		# can add associated models check railscast 343
 		# or add unaccent
 
-	def self.text_search(query)
-  	if query.present?
-    	rank = <<-RANK
-      	ts_rank(to_tsvector(title), plainto_tsquery(#{sanitize(query)})) +
-      	ts_rank(to_tsvector(body), plainto_tsquery(#{sanitize(query)}))
-    	RANK
-    	where("to_tsvector('english', title) @@ :q or to_tsvector('english', body) @@ :q", q: query).order("#{rank} desc")
-  	else
-    	all
-  	end
-	end
-
-  #def self.search(search)
-  #	if search
-  #  	find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
- 	#	else
-  #  	find(:all)
-  #	end
+	#def self.text_search(query)
+  #	if query.present?
+   # 	rank = <<-RANK
+   #   	ts_rank(to_tsvector(title), plainto_tsquery(#{sanitize(query)})) +
+   #   	ts_rank(to_tsvector(body), plainto_tsquery(#{sanitize(query)})) +
+    #  	ts_rank(to_tsvector(biography), plainto_tsquery(#{sanitize(query)})) +
+    #  	ts_rank(to_tsvector(writings), plainto_tsquery(#{sanitize(query)}))
+    #	RANK
+    #	where("to_tsvector('english', title) @@ :q or to_tsvector('english', body) @@ :q", q: query).order("#{rank} desc")
+  	#else
+   # 	all
+  	#end
 	#end
+
+  def self.text_search(query)
+  	if query.present?
+  		rank = <<-RANK
+      	ts_rank(to_tsvector(title), plainto_tsquery(#{sanitize(query)})) +
+      	ts_rank(to_tsvector(body), plainto_tsquery(#{sanitize(query)})) +
+     		ts_rank(to_tsvector(biography), plainto_tsquery(#{sanitize(query)})) +
+     		ts_rank(to_tsvector(writings), plainto_tsquery(#{sanitize(query)}))
+    	RANK
+  		where("title @@ :q or body @@ :q or biography @@ :q or writings @@ :q", q: query).order("#{rank} desc")
+  	else
+  		all
+  	end
+  end
 
 	#before_save :separate_links
 

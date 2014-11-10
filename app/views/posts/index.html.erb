@@ -2,32 +2,38 @@
 <FrontLogo>Work in Progress</FrontLogo>
 
 
-  <div class="search-bar">
+
+<%= form_tag posts_path, method: :get do %>
+<div class="search-bar">
     <div class="search-and-submit">
-      <input type="search" placeholder="Enter Search" />
+        <%= text_field_tag :query, params[:query], placeholder: "search here"%>
+
       <button type="submit">
-        <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png" alt="Search Icon">
+        <%= image_submit_tag("https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png", width:15, title: nil) %>
+
       </button>
     </div>
   </div>
+<% end %>
+
 <br>
 <br>
 <hr>
 
-<%= form_tag posts_path, method: :get do %>
-  <%= text_field_tag :query, params[:query] %>
-  <%= submit_tag "Search", title: nil %>
-<% end %>
+
 
 <% @posts.each do |post| %>
 	<%= link_to post.title, post_path(post) %>
 	<%= post.body %>
+
 	<% if user_signed_in? %>
 	<button><%= link_to 'Edit Post', edit_post_path(post)%></button>
 	<%= link_to 'Delete Post', post, method: :delete, data: { confirm: "Are you sure?" } %>
 	<% end %>
 	<hr>
 <% end %>
+
+
 
 <%= will_paginate @posts %>
 
