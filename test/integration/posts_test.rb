@@ -7,4 +7,5 @@ class PostsTest < ActionDispatch::IntegrationTest
 		click_link "New Post"
 		assert_equal new_user_session_path, current_path
 	end
+	
 end

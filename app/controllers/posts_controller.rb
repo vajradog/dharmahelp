@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 	
 	def index
 		@posts = Post.text_search(params[:query]).page(params[:page]).per_page(30)
+		@all_posts = Post.all
 	end
 
 	def new
@@ -23,6 +24,16 @@ class PostsController < ApplicationController
 	end
 
 	def show
+		respond_to do |format|
+			format.html
+			format.pdf do
+				pdf = PostPdf.new(@post)
+				send_data pdf.render, filename: "#{@post.title}.pdf",
+															type: "application/pdf",
+															disposition: "inline"
+
+			end
+		end
 	end
 
 	def edit

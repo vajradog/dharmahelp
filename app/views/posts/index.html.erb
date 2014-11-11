@@ -21,19 +21,32 @@
 <hr>
 
 
-
+<article class="type-system-serif"> 
 <% @posts.each do |post| %>
-	<%= link_to post.title, post_path(post) %>
-	<%= post.body %>
+	<h4><%= link_to post.title, post_path(post) %></h4>
+	<p><%= post.body %></p>
 
 	<% if user_signed_in? %>
 	<button><%= link_to 'Edit Post', edit_post_path(post)%></button>
 	<%= link_to 'Delete Post', post, method: :delete, data: { confirm: "Are you sure?" } %>
 	<% end %>
 	<hr>
-<% end %>
+<% end %></article>
 
+<!-- OPTIONAL
+<hr>
+<#% @all_posts.each do |post| %>
+  <%#= link_to post.title, post_path(post) %>
+  <%#= post.body %>
 
+  <%# if user_signed_in? %>
+  <button><%#= link_to 'Edit Post', edit_post_path(post)%></button>
+  <%#= link_to 'Delete Post', post, method: :delete, data: { confirm: "Are you sure?" } %>
+  <%# end %>
+  <hr>
+<%# end %>
+
+-->
 
 <%= will_paginate @posts %>
 

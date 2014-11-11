@@ -17,9 +17,12 @@ gem 'rails_12factor', group: :production
 gem 'will_paginate'
 #gem 'textacular', '~> 3.0'
 gem 'pg_search'
+gem 'prawn'
 
 gem 'bourbon'
 gem 'neat'
+
+gem 'bullet', group: :development
 
 group :test do
 	gem 'shoulda'
