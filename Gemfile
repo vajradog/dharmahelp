@@ -28,6 +28,7 @@ group :test do
 	gem 'shoulda'
 	gem 'mocha'
 	gem 'capybara'
+	gem 'simplecov', :require => false
 end
 
 # Use ActiveModel has_secure_password

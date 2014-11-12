@@ -3,25 +3,21 @@ class Post < ActiveRecord::Base
 	validates :title, uniqueness: true
 	validates :body, presence: true
 
+	belongs_to :category
+	before_save :create_category_from_name
+
+	attr_accessor :new_category_name
+	
+
+	def create_category_from_name
+		create_category(name: new_category_name) unless new_category_name.blank?		
+	end
+
 	include PgSearch
 	pg_search_scope :search, against: [:title, :body, :biography, :writings],
 		using: {tsearch: {dictionary: "english"}}
 		# can add associated models check railscast 343
 		# or add unaccent
-
-	#def self.text_search(query)
-  #	if query.present?
-   # 	rank = <<-RANK
-   #   	ts_rank(to_tsvector(title), plainto_tsquery(#{sanitize(query)})) +
-   #   	ts_rank(to_tsvector(body), plainto_tsquery(#{sanitize(query)})) +
-    #  	ts_rank(to_tsvector(biography), plainto_tsquery(#{sanitize(query)})) +
-    #  	ts_rank(to_tsvector(writings), plainto_tsquery(#{sanitize(query)}))
-    #	RANK
-    #	where("to_tsvector('english', title) @@ :q or to_tsvector('english', body) @@ :q", q: query).order("#{rank} desc")
-  	#else
-   # 	all
-  	#end
-	#end
 
   def self.text_search(query)
   	if query.present?

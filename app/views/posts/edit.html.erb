@@ -1,3 +1,5 @@
+<h1>Edit Post</h1>
+
 <%= form_for @post do |form| %>
   <%= form.label :title %>
   <%= form.text_field :title %> <br>
@@ -15,8 +17,14 @@
   <%= form.text_area :further_readings %>
   <%= form.label :links %>
   <%= form.text_area :links %>
+
+  <%= form.label :category_id %>
+  <%= form.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
+  or create one: <%= form.text_field :new_category_name %>
+
   <%= form.submit %>
 <% end %>
+
 
 
 <header>

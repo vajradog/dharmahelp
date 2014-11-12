@@ -1,0 +1,8 @@
+<h1> Categories Index </h1>
+
+<% @categories.each do |cat| %>
+	<%= link_to cat.name, category_path(cat) %> <br>
+	<%= link_to 'edit', edit_category_path(cat)%>
+	<%= link_to 'delete', cat, method: :delete, data: { confirm: "are you sure?"} %>
+	<hr>
+<% end %>

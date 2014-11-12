@@ -1,3 +1,11 @@
+<hr>
+<div class="breadcrumb">
+  <links><%= link_to 'Categories', categories_path %></links>
+  <links><%= link_to @post.category.name, category_path(@post.category) if @post.category %></links>
+</div>
+
+
+
 <section>
   <aside>
 
@@ -15,7 +23,7 @@
       </div>
     <% end %>
 
-    <p><%= link_to "print this document (PDF)", post_path(@post, format: "pdf") %></p>
+    <p><%= link_to "save/print this document (PDF)", post_path(@post, format: "pdf") %></p>
 
 
     <% if @post.source? %>
