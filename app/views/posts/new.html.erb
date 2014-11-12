@@ -20,7 +20,7 @@
 
 	<%= form.label :category_id %>
 	<%= form.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
-	or create one: <%= form.text_field :new_category_name %>
+	<%= form.label :new_category_name, 'create a category'%> <%= form.text_field :new_category_name %>
 
 	<%= form.submit %>
 <% end %>

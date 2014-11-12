@@ -24,7 +24,6 @@
 <article class="type-system-serif"> 
 <% @posts.each do |post| %>
 	<h4><%= link_to post.title, post_path(post) %></h4>
-  <%= post.category.name if post.category %>
 	<p><%= post.body %></p>
 
 	<% if user_signed_in? %>
