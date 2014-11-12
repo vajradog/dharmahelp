@@ -1,3 +1,5 @@
+# simple fixture for users
+
 one:
   email: user@example.com
 

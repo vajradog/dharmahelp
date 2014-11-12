@@ -1,3 +1,5 @@
+# inherits from Prawn. Refer to prawn documentation for more styling
+
 class PostPdf < Prawn::Document
 
 	def initialize(post)

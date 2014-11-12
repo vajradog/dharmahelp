@@ -1,3 +1,5 @@
+# testing action authorizations
+
 require 'test_helper'
 
 class PostsTest < ActionDispatch::IntegrationTest

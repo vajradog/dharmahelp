@@ -1,3 +1,6 @@
+# testing the search method
+
+
 require 'test_helper'
 
 class SearchTest < ActionDispatch::IntegrationTest

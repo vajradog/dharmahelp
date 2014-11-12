@@ -1,3 +1,6 @@
+# We are using authenticate_user!(provided by devise)
+# to protect all actions except index and show.
+
 class CategoriesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
   

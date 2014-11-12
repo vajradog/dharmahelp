@@ -1,14 +1,17 @@
+# validating title and body and associating category
+# includes method to create a category from the post form.
+# includes search method
+
+
 class Post < ActiveRecord::Base
 	validates :title, presence: true
 	validates :title, uniqueness: true
 	validates :body, presence: true
 
 	belongs_to :category
+
 	before_save :create_category_from_name
-
 	attr_accessor :new_category_name
-	
-
 	def create_category_from_name
 		create_category(name: new_category_name) unless new_category_name.blank?		
 	end

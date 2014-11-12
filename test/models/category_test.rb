@@ -1,3 +1,5 @@
+# basic validations and association test
+
 require 'test_helper'
 
 class CategoryTest < ActiveSupport::TestCase

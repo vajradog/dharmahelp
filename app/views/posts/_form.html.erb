@@ -1,0 +1,24 @@
+<%= form_for @post do |form| %>
+	<%= form.label :title %>
+	<%= form.text_field :title %> <br>
+	<%= form.label :body %>
+	<%= form.text_area :body, :class => 'ckeditor' %><br>
+	<%= form.label :source %>
+	<%= form.text_field :source, placeholder: "source(link) of the article" %><br>
+	<%= form.label :primary_image %>
+	<%= form.text_field :primary_image, placeholder: "full image link" %><br>
+	<%= form.label :biography %>
+	<%= form.text_area :biography, :class => 'ckeditor' %><br>
+	<%= form.label :writings %>
+	<%= form.text_area :writings, :class => 'ckeditor' %><br>
+	<%= form.label :further_readings %>
+	<%= form.text_area :further_readings, :class => 'ckeditor' %><br>
+	<%= form.label :links %>
+	<%= form.text_area :links, placeholder: "full links separated by commas" %><br>
+
+	<%= form.label :category_id %>
+	<%= form.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
+	<%= form.label :new_category_name, 'create a category'%> <%= form.text_field :new_category_name, placeholder: "enter new category name here" %>
+
+	<%= form.submit %>
+<% end %>

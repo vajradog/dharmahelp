@@ -1,27 +1,4 @@
 <h1>New Post</h1>
-
-<%= form_for @post do |form| %>
-	<%= form.label :title %>
-	<%= form.text_field :title %> <br>
-	<%= form.label :body %>
-	<%= form.text_area :body %>
-	<%= form.label :source %>
-	<%= form.text_field :source %>
-	<%= form.label :primary_image %>
-	<%= form.text_field :primary_image %>
-	<%= form.label :biography %>
-	<%= form.text_area :biography %>
-	<%= form.label :writings %>
-	<%= form.text_area :writings %>
-	<%= form.label :further_readings %>
-	<%= form.text_area :further_readings %>
-	<%= form.label :links %>
-	<%= form.text_area :links %>
-
-	<%= form.label :category_id %>
-	<%= form.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
-	<%= form.label :new_category_name, 'create a category'%> <%= form.text_field :new_category_name %>
-
-	<%= form.submit %>
-<% end %>
-
+<postform> 
+<%= render 'form'%>
+</postform>

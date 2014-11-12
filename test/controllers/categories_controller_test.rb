@@ -1,3 +1,7 @@
+# basic testing for the restful resources
+# included Devise and warden for easy user assignment.
+# fixtures used for category and user
+
 require 'test_helper'
 
 class CategoriesControllerTest < ActionController::TestCase

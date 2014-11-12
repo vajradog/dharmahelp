@@ -1,3 +1,6 @@
+# We are using authenticate_user!(provided by devise)
+# to protect all actions except index and show.
+
 class PostsController < ApplicationController
 	before_action :set_post, only: [:show, :edit, :update, :destroy]
 	before_filter :authenticate_user!, except: [:index, :show]

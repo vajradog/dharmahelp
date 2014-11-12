@@ -1,4 +1,4 @@
-<%= link_to '| New Post', new_post_path %><br>
+<%= link_to '| New Post', new_post_path, :data => { :no_turbolink => true }  %><br>
 <FrontLogo>Work in Progress</FrontLogo>
 
 
@@ -27,7 +27,7 @@
 	<p><%= post.body %></p>
 
 	<% if user_signed_in? %>
-	<button><%= link_to 'Edit Post', edit_post_path(post)%></button>
+	<button><%= link_to 'Edit Post', edit_post_path(post), :data => { :no_turbolink => true } %></button>
 	<%= link_to 'Delete Post', post, method: :delete, data: { confirm: "Are you sure?" } %>
 	<% end %>
 	<hr>

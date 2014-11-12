@@ -1,3 +1,20 @@
+/************
+form styling starts
+********/
+
+postform {
+  @include clearfix;
+  @include outer-container;
+  font-size: .8em;
+  text-align: left;   
+  @include span-columns(6);
+  }
+
+
+
+/************
+form styling ends
+********/
 
 /***************************
 breadcrumbs style start

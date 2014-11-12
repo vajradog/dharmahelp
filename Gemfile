@@ -18,6 +18,10 @@ gem 'will_paginate'
 #gem 'textacular', '~> 3.0'
 gem 'pg_search'
 gem 'prawn'
+gem 'ckeditor_rails'
+
+
+#installed reek
 
 gem 'bourbon'
 gem 'neat'

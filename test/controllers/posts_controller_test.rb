@@ -1,3 +1,8 @@
+# basic testing for the restful resources
+# included Devise and warden for easy user assignment.
+# fixtures used for post and user
+
+
 require 'test_helper'
 
 class PostsControllerTest < ActionController::TestCase
