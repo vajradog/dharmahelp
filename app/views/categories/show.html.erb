@@ -1,2 +1,6 @@
 <h1>Category Show page</h1>
 <%= @category.name %>
+
+<% @category.posts.each do |post| %>
+  <%= post.title %> <hr>
+<% end %>

@@ -13,6 +13,26 @@
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
+
+<FrontLogo>Dharma Help</FrontLogo>
+
+<%= form_tag posts_path, method: :get do %>
+<div class="search-bar">
+    <div class="search-and-submit">
+        <%= text_field_tag :query, params[:query], placeholder: "search here"%>
+
+      <button type="submit">
+        <%= image_submit_tag("https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon.png", width:15, title: nil) %>
+
+      </button>
+    </div>
+  </div>
+<% end %>
+
+<br>
+<br>
+<hr>
+<%= yield %>
 <% if user_signed_in? %>
   Logged in as <strong><%= current_user.email %></strong>.
   <%= link_to 'Edit profile', edit_user_registration_path %> |
@@ -23,9 +43,7 @@
 <% end %> <br>
 <%= link_to 'Home', root_path %>
 <%= link_to '| Categories', categories_path %>
-
-
-<%= yield %>
+<%= link_to '| New Post', new_post_path, :data => { :no_turbolink => true }  %><br>
 
 </body>
 </html>

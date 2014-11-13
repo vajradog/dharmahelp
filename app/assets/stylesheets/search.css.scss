@@ -1,9 +1,11 @@
+
 .search-bar {
   $search-bar-border-color: $base-border-color;
   $search-bar-border: 2px solid $search-bar-border-color;
   $search-bar-background: lighten($search-bar-border-color, 10);
   @include span-columns(10);
   @include shift(1);
+
   
 
   @include media($medium-screen) {
