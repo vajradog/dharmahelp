@@ -4,8 +4,6 @@
 @import "neat";
 
 
-
-
 // Media Queries
 @import 'mobile';
 // @import 'tablet';
@@ -18,3 +16,11 @@
 @import "typography";
 @import "search";
 @import "footer";
+
+body {
+margin-top: 0;
+}
+
+header {
+padding: 0;
+}

@@ -8,6 +8,7 @@ FrontLogo {
     padding-bottom: 3em;
 }
 
+/*  NEED TO CHECK might be duplicate
 header {
 
   h1 {
@@ -20,6 +21,7 @@ header {
     float: right;
   }
 }
+*/
 
 section {
   @include outer-container;

@@ -18,9 +18,13 @@ class Post < ActiveRecord::Base
 
 	include PgSearch
 	pg_search_scope :search, against: [:title, :body, :biography, :writings],
-		using: {tsearch: {dictionary: "english"}}
+		using: {tsearch: {dictionary: "english"}},
+		associated_against: {category: :name},
+		:ignoring => :accents
 		# can add associated models check railscast 343
 		# or add unaccent
+
+
 
   def self.text_search(query)
   	if query.present?
@@ -35,6 +39,10 @@ class Post < ActiveRecord::Base
   		all
   	end
   end
+
+
+
+  
 
 	#before_save :separate_links
 

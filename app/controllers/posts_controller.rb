@@ -7,8 +7,8 @@ class PostsController < ApplicationController
 
 	
 	def index
-		@posts = Post.text_search(params[:query]).page(params[:page]).per_page(30)
-		@all_posts = Post.all
+		@posts = Post.page(params[:page]).per_page(3)
+		@posts_results = Post.text_search(params[:query]).page(params[:page]).per_page(3)
 	end
 
 	def new
@@ -48,7 +48,7 @@ class PostsController < ApplicationController
 			redirect_to post_path(@post)
 		else
 			flash[:error] = "Could not save post"
-			redner 'edit'
+			render 'edit'
 		end
 	end
 

@@ -1,7 +1,14 @@
+
+
+
 <hr>
 <div class="breadcrumb">
-  <links><%= link_to 'Categories', categories_path %></links>
-  <links><%= link_to @post.category.name, category_path(@post.category) if @post.category %></links>
+   <links><%= link_to 'Home', root_path %></links>
+  <links><%= link_to 'All Categories', categories_path %></links>
+  <% if @post.category %>
+  <links><%= link_to @post.category.name, category_path(@post.category) %></links>
+  <% end %>
+  <links><%= @post.title %></links>
 </div>
 
 
@@ -23,7 +30,9 @@
       </div>
     <% end %>
 
-    <p><%= link_to "save/print this document (PDF)", post_path(@post, format: "pdf") %></p>
+  <!-- NEED TO TEST THIS THING
+  NOT RENDERING PROPERLY
+   <p><#%= link_to "save/print this document (PDF)", post_path(@post, format: "pdf") %></p> -->
 
 
     <% if @post.source? %>
@@ -44,12 +53,12 @@
   </aside>
   <article class="type-system-serif"> 
     <h1><%= @post.title %></h1>
-    <p><%= simple_format @post.body %></p> 
+    <p><%=raw @post.body %></p> 
     
     <% if @post.biography? %>
     <hr>
     <h2>Biography</h2>
-    <p><%= simple_format @post.biography %></p> 
+    <p><%=sanitize(@post.biography) %></p> 
     <% end %>
 
     <% if @post.further_readings? %>
@@ -58,7 +67,7 @@
     <p><%= simple_format @post.further_readings %></p> 
     <% end %>
 
-    <% if @post.further_readings? %>
+    <% if @post.writings? %>
     <hr>
     <h2>Writings</h2>
     <p><%= simple_format @post.writings %></p> 
