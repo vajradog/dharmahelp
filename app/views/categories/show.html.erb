@@ -1,6 +1,27 @@
-<h1>Category Show page</h1>
-<%= @category.name %>
+<div class="breadcrumb">
+   <links><%= link_to 'Home', root_path %></links>
+  <links><%= link_to 'All Categories', categories_path %></links>
+  <links><%= @category.name %></links>
+  
+</div>
+
+
 
 <% @category.posts.each do |post| %>
-  <%= post.title %> <hr>
+<div class="comment">
+  <div class="comment-image">
+       <%= image_tag(post.primary_image)%>
+  </div>
+  <div class="comment-content">
+    <h1><%= link_to post.title, post_path(post) %></h1>
+    <small><%=simple_format post.body.truncate(200) %>
+
+    </small>
+    <p class="comment-detail"><%= link_to 'learn more', post_path(post) %></p>
+
+
+    
+  </div>
+</div>
 <% end %>
+

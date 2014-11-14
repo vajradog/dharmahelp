@@ -1,15 +1,28 @@
-<article class="type-system-serif"> 
 <% @posts_results.each do |post| %>
-	<h4><%= link_to post.title, post_path(post) %></h4>  
-  <%=raw post.body %>
+<div class="comment">
+  <div class="comment-image">
+       <%= image_tag(post.primary_image)%>
+  </div>
+  <div class="comment-content">
+    <h1><%= link_to post.title, post_path(post) %> <small><font color="gray"> | <%= post.category.name if post.category%></font></small></h1>
+    <small><%=simple_format post.body.truncate(200) %>
+
+    </small>
+    <p class="comment-detail"><%= link_to 'learn more', post_path(post) %>
+    <% if user_signed_in? %>
+  <%= link_to '| Edit', edit_post_path(post), :data => { :no_turbolink => true } %>
+  <%= link_to '| Delete', post, method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
+</p>
 
 
-	<% if user_signed_in? %>
-	<%= link_to 'Edit Post', edit_post_path(post), :data => { :no_turbolink => true } %>
-	<%= link_to 'Delete Post', post, method: :delete, data: { confirm: "Are you sure?" } %>
-	<% end %>
-	<hr>
-<% end %></article>
+    
+  </div>
+</div>
+<% end %>
+
+
+
 
 <% if @posts_results.empty? %>
 
@@ -71,11 +84,9 @@
 
 -->
 
-<% if @posts_results.empty? %>
-<%= will_paginate @posts %>
-<% else %>
+
 <%= will_paginate @posts_results %>
-<% end %>
+
 
 
 <!--

@@ -1,10 +1,24 @@
+<div class="breadcrumb">
+   <links><%= link_to 'Home', root_path %></links>
+  <links><%= link_to 'All Categories', categories_path %></links>
+  
+</div>
 
-<h1> Categories Index </h1>
+
 
 <% @categories.each do |cat| %>
-	<%= link_to cat.name, category_path(cat) %> <br>
-	<%= cat.posts.count %> Articles <br>
-	<%= link_to 'edit', edit_category_path(cat)%>
-	<%= link_to 'delete', cat, method: :delete, data: { confirm: "are you sure?"} %>
-	<hr>
+<div class="comment">
+  <div class="comment-image">
+    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" alt="Logo image">
+  </div>
+  <div class="comment-content">
+    <h1><%= link_to cat.name, category_path(cat) %></h1>
+    <p><%= pluralize(cat.posts.count, 'article') %>. 
+   <!-- <p class="comment-detail">Date or details about this post</p>-->
+
+
+    
+  </div>
+</div>
 <% end %>
+
