@@ -19,6 +19,9 @@ gem 'will_paginate'
 gem 'pg_search'
 gem 'prawn'
 gem 'ckeditor_rails'
+gem 'unicorn'
+#gem 'dalli'
+#gem 'memcachier'
 
 
 #installed reek
